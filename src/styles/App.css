@@ -1,0 +1,57 @@
+.app-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 80%;
+}
+
+.columns-container {
+  display: flex;
+  gap: 10px;
+}
+
+.column {
+  background: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 200px;
+}
+
+.task {
+  background: #fff;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.task.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .board {
+    width: 100%;
+  }
+
+  .columns-container {
+    flex-direction: column;
+  }
+
+  .column {
+    min-width: 100%;
+  }
+}
