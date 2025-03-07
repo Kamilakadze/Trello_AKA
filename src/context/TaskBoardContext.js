@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import { moveTaskBetweenColumns } from './taskMovement';
 
 const TaskBoardContext = createContext();
 
@@ -14,39 +15,39 @@ const loadBoardsFromLocalStorage = () => {
 export const TaskBoardProvider = ({ children }) => {
     const [boards, setBoards] = useState(loadBoardsFromLocalStorage());
 
-    // Сохраняем данные в localStorage при каждом изменении boards
     useEffect(() => {
         saveBoardsToLocalStorage(boards);
     }, [boards]);
 
+    // ✅ Добавление доски
     const addBoard = (title) => {
-        const newBoards = [...boards, { id: Date.now(), title, columns: [] }];
-        setBoards(newBoards);
+        setBoards([...boards, { id: Date.now(), title, columns: [] }]);
     };
 
+    // ✅ Обновление доски
     const updateBoard = (boardId, title) => {
-        const newBoards = boards.map(board =>
+        setBoards(boards.map(board =>
             board.id === boardId ? { ...board, title } : board
-        );
-        setBoards(newBoards);
+        ));
     };
 
+    // ✅ Удаление доски
     const deleteBoard = (boardId) => {
-        const newBoards = boards.filter(board => board.id !== boardId);
-        setBoards(newBoards);
+        setBoards(boards.filter(board => board.id !== boardId));
     };
 
+    // ✅ Добавление новой колонки
     const addColumn = (boardId, columnTitle) => {
-        const newBoards = boards.map(board =>
+        setBoards(boards.map(board =>
             board.id === boardId
                 ? { ...board, columns: [...board.columns, { id: Date.now(), title: columnTitle, tasks: [] }] }
                 : board
-        );
-        setBoards(newBoards);
+        ));
     };
 
+    // ✅ Обновление названия колонки
     const updateColumn = (boardId, columnId, title) => {
-        const newBoards = boards.map(board =>
+        setBoards(boards.map(board =>
             board.id === boardId
                 ? {
                     ...board,
@@ -55,91 +56,123 @@ export const TaskBoardProvider = ({ children }) => {
                     )
                 }
                 : board
-        );
-        setBoards(newBoards);
+        ));
     };
 
+    // ✅ Удаление колонки
     const deleteColumn = (boardId, columnId) => {
-        const newBoards = boards.map(board =>
+        setBoards(boards.map(board =>
             board.id === boardId
                 ? { ...board, columns: board.columns.filter(column => column.id !== columnId) }
                 : board
-        );
-        setBoards(newBoards);
+        ));
     };
 
-    const addTask = (boardId, columnId, title) => {
-        const newBoards = boards.map(board =>
-            board.id === boardId
-                ? {
-                    ...board,
-                    columns: board.columns.map(column =>
-                        column.id === columnId
-                            ? { ...column, tasks: [...column.tasks, { id: Date.now(), title }] }
-                            : column
-                    )
-                }
-                : board
+    // ✅ Перемещение колонок (Drag & Drop)
+    const moveColumn = (boardId, fromIndex, toIndex) => {
+        setBoards((prevBoards) =>
+            prevBoards.map((board) => {
+                if (board.id !== boardId) return board;
+
+                const updatedColumns = [...board.columns];
+                const [movedColumn] = updatedColumns.splice(fromIndex, 1);
+                updatedColumns.splice(toIndex, 0, movedColumn);
+
+                return { ...board, columns: updatedColumns };
+            })
         );
-        setBoards(newBoards);
     };
 
-    const updateTask = (boardId, columnId, taskId, title) => {
-        const newBoards = boards.map(board =>
-            board.id === boardId
-                ? {
-                    ...board,
-                    columns: board.columns.map(column =>
-                        column.id === columnId
-                            ? {
-                                ...column,
-                                tasks: column.tasks.map(task =>
-                                    task.id === taskId ? { ...task, title } : task
-                                )
-                            }
-                            : column
-                    )
-                }
-                : board
-        );
-        setBoards(newBoards);
-    };
-
-    const deleteTask = (boardId, columnId, taskId) => {
-        const newBoards = boards.map(board =>
-            board.id === boardId
-                ? {
-                    ...board,
-                    columns: board.columns.map(column =>
-                        column.id === columnId
-                            ? { ...column, tasks: column.tasks.filter(task => task.id !== taskId) }
-                            : column
-                    )
-                }
-                : board
-        );
-        setBoards(newBoards);
-    };
-
-    const moveTask = (fromColumnId, toColumnId, fromIndex, toIndex) => {
-        const newBoards = boards.map(board => {
-            const fromColumn = board.columns.find(col => col.id === fromColumnId);
-            const toColumn = board.columns.find(col => col.id === toColumnId);
-
-            if (fromColumn && toColumn) {
-                const task = fromColumn.tasks[fromIndex];
-                fromColumn.tasks.splice(fromIndex, 1);
-                toColumn.tasks.splice(toIndex, 0, task);
-            }
-            return board;
+    // ✅ Перемещение задач между колонками (Drag & Drop)
+    const moveTask = (boardId, fromColumnId, toColumnId, fromIndex, toIndex) => {
+        setBoards((prevBoards) => {
+            const newBoards = moveTaskBetweenColumns(prevBoards, boardId, fromColumnId, toColumnId, fromIndex, toIndex);
+            console.log("Новое состояние досок:", newBoards);
+            return [...newBoards]; // ✅ Создаем новый массив, чтобы React видел обновления
         });
-        setBoards(newBoards);
     };
+  
+ 
+    // ✅ Добавление задачи
+const addTask = (boardId, columnId, title, description) => {
+    setBoards(boards.map(board =>
+        board.id === boardId
+            ? {
+                ...board,
+                columns: board.columns.map(column =>
+                    column.id === columnId
+                        ? { ...column, tasks: [...column.tasks, { id: Date.now(), title, description, completed: false }] }
+                        : column
+                )
+            }
+            : board
+    ));
+};
 
+// ✅ Обновление задачи
+const updateTask = (boardId, columnId, taskId, title, description) => {
+    setBoards(boards.map(board =>
+        board.id === boardId
+            ? {
+                ...board,
+                columns: board.columns.map(column =>
+                    column.id === columnId
+                        ? {
+                            ...column,
+                            tasks: column.tasks.map(task =>
+                                task.id === taskId ? { ...task, title, description } : task
+                            )
+                        }
+                        : column
+                )
+            }
+            : board
+    ));
+};
+
+// ✅ Удаление задачи
+const deleteTask = (boardId, columnId, taskId) => {
+    setBoards(boards.map(board =>
+        board.id === boardId
+            ? {
+                ...board,
+                columns: board.columns.map(column =>
+                    column.id === columnId
+                        ? { ...column, tasks: column.tasks.filter(task => task.id !== taskId) }
+                        : column
+                )
+            }
+            : board
+    ));
+};
+
+// ✅ Отметка выполнения задачи
+const toggleTaskCompletion = (boardId, columnId, taskId) => {
+    setBoards(boards.map(board =>
+        board.id === boardId
+            ? {
+                ...board,
+                columns: board.columns.map(column =>
+                    column.id === columnId
+                        ? {
+                            ...column,
+                            tasks: column.tasks.map(task =>
+                                task.id === taskId ? { ...task, completed: !task.completed } : task
+                            )
+                        }
+                        : column
+                )
+            }
+            : board
+    ));
+};
+    
     return (
         <TaskBoardContext.Provider value={{
-            boards, addBoard, updateBoard, deleteBoard, addColumn, updateColumn, deleteColumn,
-            addTask, updateTask, deleteTask, moveTask
+            boards, addBoard, updateBoard, deleteBoard,
+            addColumn, updateColumn, deleteColumn, moveColumn,
+            addTask, updateTask, deleteTask, toggleTaskCompletion,
+            moveTask
         }}>
             {children}
         </TaskBoardContext.Provider>
