@@ -1,0 +1,21 @@
+@import './Board.css';
+@import './Column.css';
+@import './Task.css';
+@import './Buttons.css';
+@import './BoardList.css';
+
+/* Основные стили */
+.app-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Общий фон и скрытие горизонтального скролла */
+html, body {
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+

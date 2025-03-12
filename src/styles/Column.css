@@ -1,0 +1,62 @@
+/* Контейнер колонок */
+.columns-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+/* Колонка */
+.column {
+  background: #e9ecef;
+  padding: 15px;
+  border-radius: 5px;
+  min-width: 280px;
+  max-width: 23%;
+  flex: 1;
+  white-space: normal;
+  height: 650px; /* Фиксированная высота */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+/* Контейнер для задач внутри колонки */
+.tasks-container {
+  flex-grow: 1;
+  overflow-y: auto; /* Добавляем вертикальный скролл */
+  max-height: 450px; /* Ограничение по высоте */
+  padding-right: 5px;
+}
+
+/* Улучшенные стили для полей ввода */
+.column input[type="text"],
+.column textarea {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  resize: none;
+}
+
+/* Кнопки в колонках */
+.column button {
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background: #73aae9;
+  color: white;
+  transition: 0.2s;
+}
+
+.column button:hover {
+  background: #0056b3;
+}

@@ -1,0 +1,70 @@
+/* Контейнер доски */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Ограничиваем максимальную ширину */
+.board {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 90%;
+  max-width: 1400px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Поле редактирования названия доски */
+.board-title-input {
+  width: 100%;
+  max-width: 280px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.board-title-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Кнопки редактирования */
+.board .edit-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.board button {
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background: #007bff;
+  color: white;
+  transition: 0.2s;
+}
+
+.board button:hover {
+  background: #0056b3;
+}
+
+/* Кнопка удаления доски */
+.board .delete-btn {
+  background: #dc3545;
+}
+
+.board .delete-btn:hover {
+  background: #c82333;
+}

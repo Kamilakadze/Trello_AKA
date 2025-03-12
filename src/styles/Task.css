@@ -1,0 +1,14 @@
+/* Карточки */
+.task {
+    background: #fff;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .task.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
