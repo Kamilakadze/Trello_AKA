@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-=======
 // src/App.js
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
@@ -50,6 +26,5 @@ const App = () => {
         </DndProvider>
     );
 };
->>>>>>> 8b527a8dc91e50d789b57b62d65a3e1e1a56e97a
 
 export default App;
