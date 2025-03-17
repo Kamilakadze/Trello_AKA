@@ -14,6 +14,7 @@
     "react-dnd-html5-backend": "^16.0.1",
 >>>>>>> 8b527a8dc91e50d789b57b62d65a3e1e1a56e97a
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

@@ -1,14 +1,110 @@
-/* Карточки */
+/* Общий стиль для задачи */
 .task {
-    background: #fff;
-    padding: 8px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .task.done {
-    text-decoration: line-through;
-    opacity: 0.6;
-  }
-  
+  background: white;
+  border: 1px solid #b1b8c0;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ✅ Стиль для выполненной задачи */
+.task-completed {
+  background: #d4edda !important; /* Светло-зеленый фон */
+}
+
+/* ✅ Только текст зачеркивается при выполнении */
+.completed-text {
+  text-decoration: line-through;
+}
+
+/* ✅ Стиль редактируемой задачи */
+.task-editing {
+  background: #f1f1f1;
+  border: 1px solid #007bff;
+}
+
+/* Контейнер редактирования */
+.task-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Инпуты в редактировании */
+.task-input,
+.task-textarea {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+/* Кнопки внутри задачи */
+.task-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ Кнопка "Изменить" */
+.edit-task-btn {
+  background: #4099f8 !important;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-task-btn:hover {
+  background: #0056b3;
+}
+
+/* ✅ Кнопка "Удалить" */
+.delete-task-btn {
+  background: #e55261 !important;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-task-btn:hover {
+  background: #c82333;
+}
+
+/* ✅ Кнопка "Сохранить" */
+.save-task-btn {
+  background: #28a745 !important;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-task-btn:hover {
+  background: #218838;
+}
+
+/* ✅ Кнопка "Отмена" */
+.cancel-task-btn {
+  background: #ffc107 !important;
+  color: black;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cancel-task-btn:hover {
+  background: #e0a800;
+}

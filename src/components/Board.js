@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import TaskBoardContext from '../context/TaskBoardContext';
+import { FaEdit, FaTrash } from "react-icons/fa";
 import Column from './Column';
 
 const Board = ({ boardId, onBack }) => {
@@ -15,7 +16,7 @@ const Board = ({ boardId, onBack }) => {
 
     return (
         <div className="board-container">
-            <button onClick={onBack}>⬅ Назад</button>
+            <button className="back-btn" onClick={onBack}>⬅ Назад</button>
 
             {isEditing ? (
   <div className="edit-board-container">
@@ -26,16 +27,22 @@ const Board = ({ boardId, onBack }) => {
       onChange={(e) => setEditedTitle(e.target.value)}
     />
     <div className="edit-buttons">
-      <button onClick={() => { updateBoard(board.id, editedTitle); setIsEditing(false); }}>Сохранить</button>
-      <button onClick={() => setIsEditing(false)}>Отмена</button>
+      <button className="save-btn" onClick={() => { updateBoard(board.id, editedTitle); setIsEditing(false); }}>Сохранить</button>
+      <button className="cancel-btn" onClick={() => setIsEditing(false)}>Отмена</button>
     </div>
   </div>
 ) : (
-  <div>
-    <h2>{board.title}</h2>
-    <button onClick={() => { setEditedTitle(board.title); setIsEditing(true); }}>Редактировать</button>
-    <button className="delete-btn" onClick={() => { deleteBoard(board.id); onBack(); }}>Удалить доску</button>
-  </div>
+  <div className="board-header">
+                    <h2>{board.title}</h2>
+                    <div className="board-actions">
+                        <button className="icon-btn" onClick={() => { setEditedTitle(board.title); setIsEditing(true); }}>
+                            <FaEdit size={16} /> {/* Уменьшил размер иконки */}
+                        </button>
+                        <button className="icon-btn delete-btn" onClick={() => { deleteBoard(board.id); onBack(); }}>
+                            <FaTrash size={16} /> {/* Уменьшил размер иконки */}
+                        </button>
+                    </div>
+                </div>
 )}
 
 
@@ -58,7 +65,7 @@ const Board = ({ boardId, onBack }) => {
                 ))}
             </div>
 
-            <button onClick={() => addColumn(board.id, "Новая колонка")}>Добавить колонку</button>
+            <button className="add-column-btn" onClick={() => addColumn(board.id, "Новая колонка")}>Добавить колонку</button>
         </div>
     );
 };

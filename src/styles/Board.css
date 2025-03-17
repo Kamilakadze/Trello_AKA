@@ -39,11 +39,13 @@
 }
 
 /* Кнопки редактирования */
+/* Кнопки редактирования */
 .board .edit-buttons {
   display: flex;
-  gap: 8px;
+  gap: 12px; /* ✅ Увеличили расстояние между кнопками */
   margin-top: 5px;
 }
+
 
 .board button {
   padding: 8px;
@@ -68,3 +70,223 @@
 .board .delete-btn:hover {
   background: #c82333;
 }
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu .delete-btn {
+  color: red;
+}
+
+
+/* Контейнер доски */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Кнопка "Назад" */
+.back-btn {
+  background: #ccd6f1;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #f5c6cb;
+}
+
+/* Заголовок доски и кнопки */
+/* Контейнер доски */
+/* Контейнер доски */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Кнопка "Назад" */
+.back-btn {
+  background: #ffffff;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #ccd6f1;
+}
+
+/* Заголовок доски */
+.board-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Название доски */
+.board-header h2 {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Контейнер для кнопок (иконок) */
+.board-actions {
+  display: flex;
+  gap: 2px;
+}
+
+/* Кнопки-иконки */
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 18px; /* Уменьшенный размер */
+  cursor: pointer;
+  padding: 5px;
+  transition: 0.2s;
+  color: #5ba5f5;
+}
+
+.icon-btn:hover {
+  color: #007bff;
+}
+
+
+
+/* Поле редактирования названия доски */
+.board-title-input {
+  width: 100%;
+  max-width: 240px; /* Уменьшил ширину */
+  padding: 10px; /* Чуть меньше отступ */
+  font-size: 16px; /* Немного уменьшил шрифт */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px; /* ✅ Отодвинул вниз */
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.board-title-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Контейнер для кнопок "Сохранить" и "Отмена" */
+.edit-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Центрируем кнопки */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+/* Исправление кнопки удаления */
+.delete-btn {
+  background: none !important; /* ✅ Убираем фон */
+  color: #dc3545 !important; /* ✅ Делаем саму иконку красной */
+  font-size: 18px; /* ✅ Размер иконки */
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  color: #c82333;
+}
+
+/* Исправление кнопок "Сохранить" и "Отмена" */
+.save-btn {
+  background: #28a745; /* ✅ Зеленая кнопка */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-btn:hover {
+  background: #218838;
+}
+
+.cancel-btn {
+  background: #ffc107; /* ✅ Желтая кнопка */
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #e0a800;
+}
+
+
+/* Кнопка добавления колонки */
+.add-column-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-column-btn:hover {
+  background: #ccd6f1;
+}
+

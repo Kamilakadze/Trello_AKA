@@ -11,25 +11,26 @@
 
 /* Колонка */
 .column {
-  background: #e9ecef;
+  background: white; /* ✅ Изменил цвет фона на белый */
   padding: 15px;
   border-radius: 5px;
   min-width: 280px;
   max-width: 23%;
   flex: 1;
   white-space: normal;
-  height: 650px; /* Фиксированная высота */
+  height: 650px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   margin-top: 10px;
+  border: 1px solid #b1b8c0; /* ✅ Синяя граница */
 }
 
 /* Контейнер для задач внутри колонки */
 .tasks-container {
   flex-grow: 1;
-  overflow-y: auto; /* Добавляем вертикальный скролл */
-  max-height: 450px; /* Ограничение по высоте */
+  overflow-y: auto;
+  max-height: 450px;
   padding-right: 5px;
 }
 
@@ -46,6 +47,12 @@
 }
 
 /* Кнопки в колонках */
+.column .edit-buttons {
+  display: flex;
+  gap: 12px; /* ✅ Увеличили расстояние между кнопками */
+  margin-top: 5px;
+}
+
 .column button {
   padding: 8px;
   font-size: 14px;
@@ -59,4 +66,163 @@
 
 .column button:hover {
   background: #0056b3;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  background: none !important;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  transition: 0.2s;
+  color: black !important; /* ✅ Черный цвет */
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu .delete-btn {
+  color: red;
+}
+
+/* Контейнер заголовка колонки */
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ✅ Заголовок теперь по центру */
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f1f1f1;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Название колонки */
+.column-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  flex-grow: 1; /* ✅ Позволяет заголовку центрироваться */
+  text-align: center;
+}
+
+/* Кнопка "три точки" */
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  transition: 0.2s;
+  color: black; /* ✅ Изменил цвет на черный */
+}
+
+/* Убираем фон при наведении */
+.menu-button:hover {
+  color: black !important; /* ✅ Черный цвет остается */
+  background: none;
+}
+
+/* Контейнер для выпадающего меню */
+.menu-container {
+  position: relative;
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  z-index: 10;
+  min-width: 140px;
+}
+
+/* Кнопки внутри меню */
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333; /* ✅ Сделал текст "Редактировать" темным */
+}
+
+.dropdown-menu button:hover {
+  background: #f1f1f1;
+}
+
+/* Кнопка удаления */
+.dropdown-menu .delete-btn {
+  color: red;
+}
+
+.dropdown-menu .delete-btn:hover {
+  background: #ffe6e6;
+}
+
+.add-task-btn {
+  background: #034184 !important;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-task-btn:hover {
+  background: #0056b3;
+}
+
+.save-btn-name-column {
+  background: #ccd6f1 !important;
+  color: black !important;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+.cancel-btn-name-column {
+  background: #ccd6f1 !important;
+  color: black !important;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
 }

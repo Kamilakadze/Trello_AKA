@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { FaEllipsisV, FaEdit, FaTrash } from 'react-icons/fa';
 import TaskBoardContext from '../context/TaskBoardContext';
 import Task from './Task';
-
 
 const Column = ({ boardId, column, index, moveColumn }) => {
     const { updateColumn, deleteColumn, addTask, moveTask } = useContext(TaskBoardContext);
@@ -11,8 +11,10 @@ const Column = ({ boardId, column, index, moveColumn }) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [newTaskDescription, setNewTaskDescription] = useState('');
     const [taskList, setTaskList] = useState(column.tasks || []);
+    const [menuOpen, setMenuOpen] = useState(false);
+
     useEffect(() => {
-        setTaskList(column.tasks || []); // ✅ Обновляем `tasks` при изменении состояния
+        setTaskList(column.tasks || []);
     }, [column.tasks]);
 
     const handleSaveTitle = () => {
@@ -43,64 +45,52 @@ const Column = ({ boardId, column, index, moveColumn }) => {
         drop: (item, monitor) => {
             if (!monitor.isOver({ shallow: true })) return;
 
-            console.log(`Drop: перемещаем задачу ${item.id} в колонку ${column.id}`);
-
             if (item.columnId !== column.id) {
                 moveTask(boardId, item.columnId, column.id, item.index, taskList.length);
-                item.columnId = column.id; // ✅ Теперь React обновляет состояние задачи
+                item.columnId = column.id;
                 item.index = taskList.length;
             }
         },
     });
-    
+
     return (
         <div ref={(node) => drag(drop(node))} className="column" style={{ opacity: isDragging ? 0.5 : 1 }}>
             {isEditing ? (
                 <div>
-                    <input
-                        type="text"
-                        value={newTitle}
-                        onChange={(e) => setNewTitle(e.target.value)}
-                    />
-                    <button onClick={handleSaveTitle}>Сохранить</button>
-                    <button onClick={() => setIsEditing(false)}>Отмена</button>
+                    <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+                    <button className="save-btn-name-column" onClick={handleSaveTitle}>Сохранить</button>
+                    <button className="cancel-btn-name-column" onClick={() => setIsEditing(false)}>Отмена</button>
                 </div>
             ) : (
-                <div>
+                <div className="column-header">
                     <h3>{column.title}</h3>
-                    <button onClick={() => setIsEditing(true)}>Редактировать</button>
-                    <button onClick={() => deleteColumn(boardId, column.id)}>Удалить</button>
+                    <div className="menu-container">
+                        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)}>
+                            <FaEllipsisV />
+                        </button>
+                        {menuOpen && (
+                            <div className="dropdown-menu">
+                                <button onClick={() => { setIsEditing(true); setMenuOpen(false); }}>
+                                    <FaEdit /> Редактировать
+                                </button>
+                                <button className="delete-btn" onClick={() => { deleteColumn(boardId, column.id); setMenuOpen(false); }}>
+                                    <FaTrash /> Удалить
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             )}
 
             <div ref={dropTask} className="tasks-container">
                 {column.tasks.map((task, index) => (
-                    <Task
-                        key={task.id}
-                        task={task}
-                        index={index}
-                        columnId={column.id}
-                        boardId={boardId}
-                    />
+                    <Task key={task.id} task={task} index={index} columnId={column.id} boardId={boardId} />
                 ))}
             </div>
 
-            <input
-                type="text"
-                placeholder="Название задачи..."
-                value={newTaskTitle}
-                onChange={(e) => setNewTaskTitle(e.target.value)}
-            />
-            <textarea
-                placeholder="Описание задачи..."
-                value={newTaskDescription}
-                onChange={(e) => setNewTaskDescription(e.target.value)}
-            />
-            <button onClick={() => { 
-                addTask(boardId, column.id, newTaskTitle, newTaskDescription);
-                setNewTaskTitle('');
-                setNewTaskDescription('');
-            }}>Добавить задачу</button>
+            <input type="text" placeholder="Название задачи..." value={newTaskTitle} onChange={(e) => setNewTaskTitle(e.target.value)} />
+            <textarea placeholder="Описание задачи..." value={newTaskDescription} onChange={(e) => setNewTaskDescription(e.target.value)} />
+            <button className="add-task-btn" onClick={() => { addTask(boardId, column.id, newTaskTitle, newTaskDescription); setNewTaskTitle(''); setNewTaskDescription(''); }}>Добавить задачу</button>
         </div>
     );
 };
