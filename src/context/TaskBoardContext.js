@@ -37,13 +37,22 @@ export const TaskBoardProvider = ({ children }) => {
     };
 
     // ✅ Добавление новой колонки
-    const addColumn = (boardId, columnTitle) => {
+    const addColumn = (boardId, columnTitle, columnDescription = "") => {
         setBoards(boards.map(board =>
             board.id === boardId
-                ? { ...board, columns: [...board.columns, { id: Date.now(), title: columnTitle, tasks: [] }] }
+                ? {
+                    ...board,
+                    columns: [...board.columns, {
+                        id: Date.now(),
+                        title: columnTitle,
+                        description: columnDescription,
+                        tasks: []
+                    }]
+                }
                 : board
         ));
     };
+
 
     // ✅ Обновление названия колонки
     const updateColumn = (boardId, columnId, title) => {

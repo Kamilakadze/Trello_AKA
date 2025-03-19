@@ -19,20 +19,20 @@ const Board = ({ boardId, onBack }) => {
             <button className="back-btn" onClick={onBack}>⬅ Назад</button>
 
             {isEditing ? (
-  <div className="edit-board-container">
-    <input
-      type="text"
-      className="board-title-input"
-      value={editedTitle}
-      onChange={(e) => setEditedTitle(e.target.value)}
-    />
-    <div className="edit-buttons">
-      <button className="save-btn" onClick={() => { updateBoard(board.id, editedTitle); setIsEditing(false); }}>Сохранить</button>
-      <button className="cancel-btn" onClick={() => setIsEditing(false)}>Отмена</button>
-    </div>
-  </div>
-) : (
-  <div className="board-header">
+                <div className="edit-board-container">
+                    <input
+                        type="text"
+                        className="board-title-input"
+                        value={editedTitle}
+                        onChange={(e) => setEditedTitle(e.target.value)}
+                    />
+                    <div className="edit-buttons">
+                        <button className="save-btn" onClick={() => { updateBoard(board.id, editedTitle); setIsEditing(false); }}>Сохранить</button>
+                        <button className="cancel-btn" onClick={() => setIsEditing(false)}>Отмена</button>
+                    </div>
+                </div>
+            ) : (
+                <div className="board-header">
                     <h2>{board.title}</h2>
                     <div className="board-actions">
                         <button className="icon-btn" onClick={() => { setEditedTitle(board.title); setIsEditing(true); }}>
@@ -43,7 +43,7 @@ const Board = ({ boardId, onBack }) => {
                         </button>
                     </div>
                 </div>
-)}
+            )}
 
 
             <div className="columns-wrapper">
@@ -65,7 +65,14 @@ const Board = ({ boardId, onBack }) => {
                 ))}
             </div>
 
-            <button className="add-column-btn" onClick={() => addColumn(board.id, "Новая колонка")}>Добавить колонку</button>
+            <button className="add-column-btn" onClick={() => {
+                const columnTitle = prompt("Введите название колонки:");
+                if (columnTitle && columnTitle.trim() !== "") {
+                    addColumn(board.id, columnTitle.trim());
+                }
+            }}>
+                Добавить колонку
+            </button>
         </div>
     );
 };
