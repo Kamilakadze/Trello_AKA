@@ -35,7 +35,7 @@
 }
 
 /* Улучшенные стили для полей ввода */
-.column input[type="text"],
+.column input[type='text'],
 .column textarea {
   width: 90%;
   padding: 8px;

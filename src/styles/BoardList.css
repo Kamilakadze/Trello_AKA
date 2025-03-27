@@ -123,20 +123,20 @@
 /* Контейнер для добавления новой доски */
 .add-board {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
   margin-top: 20px;
   text-align: center;
 }
 
 /* Поле ввода для названия новой доски */
 .add-board-input {
-  width: 180px; 
-  padding: 10px; 
-  font-size: 16px; 
-  border: 1px solid #5ba5f5; 
-  border-radius: 5px; 
+  width: 180px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #5ba5f5;
+  border-radius: 5px;
   outline: none;
   transition: 0.2s ease-in-out;
 }
@@ -171,11 +171,11 @@
 }
 
 .save-btn-bl {
-  border: 1.5px solid #ccd6f1 !important; 
-  border-radius: 5px; 
+  border: 1.5px solid #ccd6f1 !important;
+  border-radius: 5px;
 }
 
 .cancel-btn-bl {
-  border: 1.5px solid #ccd6f1 !important; 
-  border-radius: 5px; 
+  border: 1.5px solid #ccd6f1 !important;
+  border-radius: 5px;
 }

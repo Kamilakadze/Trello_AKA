@@ -46,7 +46,6 @@
   margin-top: 5px;
 }
 
-
 .board button {
   padding: 8px;
   font-size: 14px;
@@ -111,7 +110,6 @@
 .dropdown-menu .delete-btn {
   color: red;
 }
-
 
 /* Контейнер доски */
 .board-container {
@@ -198,8 +196,6 @@
   color: #007bff;
 }
 
-
-
 /* Поле редактирования названия доски */
 .board-title-input {
   width: 100%;
@@ -272,7 +268,6 @@
   background: #e0a800;
 }
 
-
 /* Кнопка добавления колонки */
 .add-column-btn {
   margin-top: 20px;
@@ -289,4 +284,3 @@
 .add-column-btn:hover {
   background: #ccd6f1;
 }
-
