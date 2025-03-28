@@ -1,3 +1,12 @@
 {
-  "boards": []
+  "boards": [
+    {
+      "id": "d3bb"
+    },
+    {
+      "id": "af17",
+      "title": "Новая доска postman",
+      "columns": []
+    }
+  ]
 }

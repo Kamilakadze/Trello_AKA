@@ -1,4 +1,4 @@
-/* Контейнер доски */
+
 .board-container {
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-/* Ограничиваем максимальную ширину */
+
 .board {
   background: #f8f9fa;
   padding: 20px;
@@ -20,7 +20,7 @@
   flex-direction: column;
 }
 
-/* Поле редактирования названия доски */
+
 .board-title-input {
   width: 100%;
   max-width: 280px;
@@ -38,11 +38,9 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Кнопки редактирования */
-/* Кнопки редактирования */
 .board .edit-buttons {
   display: flex;
-  gap: 12px; /* ✅ Увеличили расстояние между кнопками */
+  gap: 12px;
   margin-top: 5px;
 }
 
@@ -61,7 +59,6 @@
   background: #0056b3;
 }
 
-/* Кнопка удаления доски */
 .board .delete-btn {
   background: #dc3545;
 }
@@ -111,7 +108,6 @@
   color: red;
 }
 
-/* Контейнер доски */
 .board-container {
   display: flex;
   flex-direction: column;
@@ -119,7 +115,6 @@
   width: 100%;
 }
 
-/* Кнопка "Назад" */
 .back-btn {
   background: #ccd6f1;
   color: black;
@@ -134,9 +129,6 @@
   background: #f5c6cb;
 }
 
-/* Заголовок доски и кнопки */
-/* Контейнер доски */
-/* Контейнер доски */
 .board-container {
   display: flex;
   flex-direction: column;
@@ -144,7 +136,6 @@
   width: 100%;
 }
 
-/* Кнопка "Назад" */
 .back-btn {
   background: #ffffff;
   color: black;
@@ -159,7 +150,6 @@
   background: #ccd6f1;
 }
 
-/* Заголовок доски */
 .board-header {
   display: flex;
   align-items: center;
@@ -168,24 +158,21 @@
   margin-top: 20px;
 }
 
-/* Название доски */
 .board-header h2 {
   font-size: 22px;
   font-weight: bold;
   text-align: center;
 }
 
-/* Контейнер для кнопок (иконок) */
 .board-actions {
   display: flex;
   gap: 2px;
 }
 
-/* Кнопки-иконки */
 .icon-btn {
   background: none;
   border: none;
-  font-size: 18px; /* Уменьшенный размер */
+  font-size: 18px;
   cursor: pointer;
   padding: 5px;
   transition: 0.2s;
@@ -196,15 +183,14 @@
   color: #007bff;
 }
 
-/* Поле редактирования названия доски */
 .board-title-input {
   width: 100%;
-  max-width: 240px; /* Уменьшил ширину */
-  padding: 10px; /* Чуть меньше отступ */
-  font-size: 16px; /* Немного уменьшил шрифт */
+  max-width: 240px;
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-top: 20px; /* ✅ Отодвинул вниз */
+  margin-top: 20px;
   outline: none;
   transition: 0.2s ease-in-out;
 }
@@ -214,21 +200,19 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Контейнер для кнопок "Сохранить" и "Отмена" */
 .edit-buttons {
   display: flex;
   gap: 10px;
-  justify-content: center; /* Центрируем кнопки */
+  justify-content: center;
   margin-top: 5px;
   margin-bottom: 10px;
   margin-left: 15px;
 }
 
-/* Исправление кнопки удаления */
 .delete-btn {
-  background: none !important; /* ✅ Убираем фон */
-  color: #dc3545 !important; /* ✅ Делаем саму иконку красной */
-  font-size: 18px; /* ✅ Размер иконки */
+  background: none !important;
+  color: #dc3545 !important;
+  font-size: 18px;
   padding: 5px;
   border: none;
   cursor: pointer;
@@ -239,9 +223,8 @@
   color: #c82333;
 }
 
-/* Исправление кнопок "Сохранить" и "Отмена" */
 .save-btn {
-  background: #28a745; /* ✅ Зеленая кнопка */
+  background: #28a745;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -255,7 +238,7 @@
 }
 
 .cancel-btn {
-  background: #ffc107; /* ✅ Желтая кнопка */
+  background: #ffc107;
   color: black;
   border: none;
   padding: 10px 15px;
@@ -268,7 +251,6 @@
   background: #e0a800;
 }
 
-/* Кнопка добавления колонки */
 .add-column-btn {
   margin-top: 20px;
   padding: 10px 15px;
