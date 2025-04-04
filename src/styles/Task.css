@@ -108,3 +108,9 @@
 .cancel-task-btn:hover {
   background: #e0a800;
 }
+
+.task {
+  background: var(--task-bg);
+  color: var(--text-color);
+}
+

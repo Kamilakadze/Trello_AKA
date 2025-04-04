@@ -226,3 +226,8 @@
   padding: 6px 10px;
   border-radius: 3px;
 }
+
+.column {
+  background: var(--column-bg);
+  color: var(--text-color);
+}

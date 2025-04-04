@@ -10,3 +10,25 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* index.css */
+:root {
+  --bg-color: #e6f2ff;
+  --text-color: #000;
+  --column-bg: white;
+  --task-bg: white;
+}
+
+[data-theme='dark'] {
+  --bg-color: #1e1e2f;
+  --text-color: #fff;
+  --column-bg: #2e2e3e;
+  --task-bg: #3c3c4d;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: 0.3s ease;
+}
+
