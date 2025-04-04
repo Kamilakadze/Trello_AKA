@@ -11,19 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* index.css */
 :root {
   --bg-color: #e6f2ff;
   --text-color: #000;
   --column-bg: white;
   --task-bg: white;
+  --task-text-color: #000;
 }
 
 [data-theme='dark'] {
   --bg-color: #1e1e2f;
-  --text-color: #fff;
+  --text-color: #ffffff;
   --column-bg: #2e2e3e;
   --task-bg: #3c3c4d;
+  --task-text-color: #ffffff;
 }
 
 body {
@@ -31,4 +32,5 @@ body {
   color: var(--text-color);
   transition: 0.3s ease;
 }
+
 

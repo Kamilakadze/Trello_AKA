@@ -229,5 +229,5 @@
 
 .column {
   background: var(--column-bg);
-  color: var(--text-color);
+  color: black !important;
 }

@@ -1,6 +1,7 @@
 /* Общий стиль для задачи */
 .task {
   background: white;
+  color: #000 !important;
   border: 1px solid #b1b8c0;
   padding: 8px;
   margin: 5px;
@@ -10,8 +11,15 @@
 
 /* ✅ Стиль для выполненной задачи */
 .task-completed {
-  background: #d4edda !important; /* Светло-зеленый фон */
+  background: #d4edda !important; /* Светло-зелёный */
+  color: #000 !important;         /* Чёрный текст в любой теме */
 }
+
+.task-completed .task-title,
+.task-completed .task-description {
+  color: #000 !important;
+}
+
 
 /* ✅ Только текст зачеркивается при выполнении */
 .completed-text {
@@ -111,6 +119,10 @@
 
 .task {
   background: var(--task-bg);
-  color: var(--text-color);
+  color: black !important;
 }
 
+.task-title,
+.task-description {
+  color: #000 !important;
+}

@@ -2,6 +2,7 @@
 
 import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext.jsx';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const ThemeSwitcher = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
@@ -10,18 +11,16 @@ const ThemeSwitcher = () => {
         <button
             onClick={toggleTheme}
             style={{
-                margin: '10px',
-                padding: '8px 12px',
-                fontSize: '16px',
-                borderRadius: '5px',
+                background: 'transparent',
+                border: 'none',
                 cursor: 'pointer',
-                border: '1px solid #ccc',
-                backgroundColor: theme === 'light' ? '#f0f0f0' : '#333',
-                color: theme === 'light' ? '#000' : '#fff',
-                transition: '0.3s ease'
+                fontSize: '20px',
+                color: theme === 'light' ? '#333' : '#f5f5f5',
+                transition: '0.3s',
             }}
+            title={theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
         >
-            Переключить тему: {theme === 'light' ? '🌞 Светлая' : '🌙 Тёмная'}
+            {theme === 'light' ? <FaMoon /> : <FaSun />}
         </button>
     );
 };
