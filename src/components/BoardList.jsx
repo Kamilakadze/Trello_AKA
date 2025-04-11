@@ -11,17 +11,21 @@ const BoardList = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const boards = useSelector((state) => state.boards.boards);
+    const user = useSelector((state) => state.auth.user); // ✅ получаем текущего пользователя
 
     const [newBoardTitle, setNewBoardTitle] = useState('');
     const [editingBoardId, setEditingBoardId] = useState(null);
     const [editedTitle, setEditedTitle] = useState('');
     const [openMenuId, setOpenMenuId] = useState(null);
 
+    // ✅ Фильтруем доски только по текущему пользователю
+    const userBoards = boards.filter((board) => board.owner === user?.email);
+
     return (
         <div className="board-list">
-            <h2>Список досок</h2>
+            <h2>Мои доски</h2>
             <div className="boards-container">
-                {boards.map((board) => (
+                {userBoards.map((board) => (
                     <div
                         key={board.id}
                         className={`board-item ${editingBoardId === board.id ? 'editing' : ''}`}
@@ -103,7 +107,7 @@ const BoardList = () => {
                     className="add-board-btn"
                     onClick={() => {
                         if (newBoardTitle.trim()) {
-                            dispatch(addBoard(newBoardTitle)); // ✅ исправлено
+                            dispatch(addBoard({ title: newBoardTitle, userEmail: user.email })); // ✅ передаём владельца
                             setNewBoardTitle('');
                         }
                     }}

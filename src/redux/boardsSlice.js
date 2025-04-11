@@ -9,13 +9,16 @@ const boardsSlice = createSlice({
     initialState,
     reducers: {
         addBoard: (state, action) => {
+            const { title, userEmail } = action.payload;
             const newBoard = {
                 id: Date.now(),
-                title: action.payload,
+                title,
                 columns: [],
+                owner: userEmail, // 👈 добавляем владельца
             };
             state.boards.push(newBoard);
         },
+
 
         updateBoard: (state, action) => {
             const { id, title } = action.payload;
